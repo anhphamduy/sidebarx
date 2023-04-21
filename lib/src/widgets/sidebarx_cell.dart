@@ -84,21 +84,22 @@ class _SidebarXCellState extends State<SidebarXCell> {
                 _Icon(item: widget.item, iconTheme: iconTheme)
               else if (widget.item.iconWidget != null)
                 widget.item.iconWidget!,
-              Flexible(
-                flex: 6,
-                child: FadeTransition(
-                  opacity: _animation,
-                  child: Padding(
-                    padding: textPadding ?? EdgeInsets.zero,
-                    child: Text(
-                      widget.item.label ?? '',
-                      style: textStyle,
-                      overflow: TextOverflow.fade,
-                      maxLines: 1,
+              if (widget.extended)
+                Flexible(
+                  flex: 6,
+                  child: FadeTransition(
+                    opacity: _animation,
+                    child: Padding(
+                      padding: textPadding ?? EdgeInsets.zero,
+                      child: Text(
+                        widget.item.label ?? '',
+                        style: textStyle,
+                        overflow: TextOverflow.fade,
+                        maxLines: 1,
+                      ),
                     ),
                   ),
                 ),
-              ),
             ],
           ),
         ),
